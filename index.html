@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronFlow Pro </title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="dark-theme">
+    <div id="app">
+        <nav class="glass-nav">
+            <div class="nav-content">
+                <div class="brand">
+                    <span class="logo">IRONFLOW <span class="pro-tag">PRO</span></span>
+                    <span class="student-id">EB01469</span>
+                </div>
+                <div class="tab-system">
+                    <button class="tab-btn active" data-tab="workout">Workouts</button>
+                    <button class="tab-btn" data-tab="tracker">Weight Tracker</button>
+                    <button class="tab-btn" data-tab="settings">Schedule</button>
+                </div>
+            </div>
+        </nav>
+
+        <section id="workout-tab" class="tab-content active">
+            <div class="header-group">
+                <select id="day-dropdown" class="gym-dropdown"></select>
+                <h2 id="day-focus-label" class="neon-text">Loading Schedule...</h2>
+            </div>
+
+            <div class="glass-card entry-card">
+                <form id="exercise-form" class="row-form">
+                    <input type="text" id="ex-name" placeholder="Exercise" required>
+                    <div class="input-group">
+                        <input type="number" id="ex-weight" placeholder="Wt" required>
+                        <select id="unit-select">
+                            <option value="kg">kg</option>
+                            <option value="lbs">lbs</option>
+                        </select>
+                    </div>
+                    <input type="number" id="ex-reps" placeholder="Reps" required>
+                    <button type="submit" class="prime-btn">ADD SET</button>
+                </form>
+            </div>
+
+            <div id="exercise-list" class="exercise-rows"></div>
+        </section>
+
+        <section id="tracker-tab" class="tab-content">
+            <div class="glass-card full-screen-card">
+                <h2 class="neon-text">Weight Journey</h2>
+                <div class="logger-box">
+                    <input type="number" id="body-weight-input" placeholder="Current Weight (kg)">
+                    <button id="log-weight-btn" class="action-btn">Log Entry</button>
+                </div>
+                <div class="weight-display-grid" id="weight-history-list"></div>
+            </div>
+        </section>
+
+        <section id="settings-tab" class="tab-content">
+            <div class="glass-card full-screen-card">
+                <h2 class="neon-text">Weekly Split</h2>
+                <div id="schedule-config-list" class="config-list"></div>
+                <button id="save-schedule" class="action-btn">Update Split</button>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
