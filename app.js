@@ -1,4 +1,36 @@
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+// ... State and Tab Logic ...
+
+const render = () => {
+    // 1. Update Workout Tracker List with Delete Option
+    const list = document.getElementById('exercise-list');
+    const dayTasks = store.workouts.filter(w => w.day === store.activeDay);
+    
+    if (dayTasks.length === 0) {
+        list.innerHTML = `<p style="color:#64748b; text-align:center;">No sets recorded for ${store.activeDay}</p>`;
+    } else {
+        list.innerHTML = dayTasks.map(w => `
+            <div class="exercise-row">
+                <div class="ex-info">
+                    <strong>${w.name}</strong><br>
+                    <small>${w.weight}${w.unit} x ${w.reps} reps</small>
+                </div>
+                <button class="delete-btn" onclick="deleteEx('${w.id}')">DELETE</button>
+            </div>
+        `).join('');
+    }
+
+    // ... Rest of Render Logic (Weight history, Schedule) ...
+};
+
+// DELETE FUNCTION
+window.deleteEx = (id) => {
+    // This is an array manipulation that updates the global state
+    store.workouts = store.workouts.filter(w => w.id !== id);
+    store.save(); // Triggers the render "callback" to update UI
+};
+
+// ... Rest of Event Listeners ...
 
 const store = {
     activeDay: 'Monday',
